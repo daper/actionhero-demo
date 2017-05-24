@@ -1,0 +1,16 @@
+version: "2"
+services:
+  ah:
+    image: node:alpine
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      REDIS_HOST: redis
+    user: $UID
+    links:
+      - redis
+  redis:
+    image: redis:alpine
+    volumes:
+      - /data
